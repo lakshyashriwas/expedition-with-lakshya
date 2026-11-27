@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { ArrowDown, ArrowRight, Search, MapPin, Menu, X, Play, Camera, Compass, Star, Download, Heart, Instagram, Youtube, Music2, Clock3, Wallet, Route, Send, ChevronRight, Globe2, Mountain, ShieldCheck } from 'lucide-react';
 import { supabase, supabaseConfigured } from './supabase';
+import IndiaExplorer from './IndiaExplorer';
 
 const destinations = [
   { name:'Varanasi', state:'Uttar Pradesh', type:'Heritage & Culture', days:'2–3 days', cost:'₹3,500–6,000', image:'https://commons.wikimedia.org/wiki/Special:FilePath/View_of_the_ghats_at_Varanasi.jpg?width=1600', imageCredit:'Photo: Vimalinarc · CC BY 4.0', imageSource:'https://commons.wikimedia.org/wiki/File:View_of_the_ghats_at_Varanasi.jpg', description:'A city of ancient ghats, quiet dawns and timeless stories.' },
@@ -79,6 +80,8 @@ function App(){
         <div className="intro-copy"><h2>Not just places.<br/><em>Stories that stay.</em></h2><p>Expedition with Lakshya is my corner of the internet to document journeys, share practical travel guides, and help you plan your own escape. Find inspiration, explore real itineraries and take a little piece of the journey with you.</p><button className="under-link" onClick={()=>scrollTo('about')}>A little about this journey <ArrowRight size={16}/></button></div>
         <div className="intro-stats"><div><strong>01</strong><span>ONE PLANET<br/>TO EXPLORE</span></div><div><strong>∞</strong><span>STORIES<br/>TO DISCOVER</span></div></div>
       </section>
+
+      <IndiaExplorer />
 
       <section className="dest-section section-wrap" id="destinations">
         <div className="section-heading"><div><div className="eyebrow"><span></span> FIND YOUR NEXT ESCAPE</div><h2>Explore <em>destinations.</em></h2></div><p>From hidden corners to iconic horizons —<br/>where will your curiosity take you?</p></div>
