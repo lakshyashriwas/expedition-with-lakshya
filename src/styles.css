@@ -62,3 +62,34 @@
 .btn-light:hover{background:#e6a16c;color:#17251f}
 .destination-card,.story-card{border-color:#e5dacb}
 @media(max-width:760px){.hero-visual.hero-poster-frame{width:min(88vw,520px);height:auto;aspect-ratio:16/9;right:50%;top:auto;bottom:2%;transform:translateX(50%)}.hero-visual.hero-poster-frame:before{filter:blur(14px) brightness(.4)}.hero-content{padding-bottom:390px}}
+
+
+/* Full-bleed landscape poster hero: poster is the background, not a side card */
+.hero{height:min(820px,76vw);min-height:650px;position:relative;overflow:hidden;background:#17251f;color:#fff}
+.hero-bg{display:none}
+.hero-visual.hero-poster-frame{position:absolute;inset:0;right:0;top:0;bottom:0;transform:none;width:100%;height:100%;aspect-ratio:auto;display:block;z-index:0;overflow:hidden}
+.hero-visual.hero-poster-frame>img{display:block;width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;object-position:center 44%;opacity:1;filter:none;z-index:0}
+.hero-shade{z-index:1;background:linear-gradient(90deg,rgba(9,20,16,.88) 0%,rgba(9,20,16,.72) 36%,rgba(9,20,16,.34) 66%,rgba(9,20,16,.12) 100%),linear-gradient(0deg,rgba(8,18,14,.48),transparent 45%)}
+.hero-content{z-index:2;padding:145px 0 0 10%;max-width:790px;text-shadow:0 2px 18px rgba(0,0,0,.18)}
+.hero .eyebrow.light{color:#fff0d8}
+.hero .eyebrow.light span{background:#f2a36f}
+.hero h1{color:#fffaf0;text-shadow:0 3px 28px rgba(0,0,0,.24)}
+.hero h1 em{color:#ffc18b}
+.hero-content>p{color:#f5eee4;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.hero .btn-light{background:#fff2df;color:#18382d;box-shadow:0 8px 28px rgba(0,0,0,.18)}
+.hero .light-link{color:#fff7ed}
+.hero-meta{color:#f7e9d7}
+.hero-index,.scroll-cue{z-index:2;color:#fff1df}
+.hero-index .index-line{background:#f2a36f}
+@media(max-width:760px){
+ .hero{height:780px;min-height:720px;max-height:none}
+ .hero-visual.hero-poster-frame{inset:0}
+ .hero-visual.hero-poster-frame>img{object-position:52% center}
+ .hero-shade{background:linear-gradient(180deg,rgba(9,20,16,.62),rgba(9,20,16,.78) 45%,rgba(9,20,16,.72))}
+ .hero-content{padding:135px 7% 0;max-width:100%}
+ .hero h1{font-size:clamp(54px,13vw,72px)}
+ .hero-content>p{max-width:470px}
+ .hero-meta{margin-top:52px}
+ .hero-index{top:auto;bottom:86px;right:7%}
+ .scroll-cue{bottom:30px}
+}
