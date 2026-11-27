@@ -63,7 +63,7 @@ function App(){
 
     <main>
       <section className="hero">
-        <div className="hero-bg"></div><div className="hero-shade"></div><div className="hero-visual" aria-label="Expedition with Lakshya travel emblem"><div className="visual-orbit orbit-one"></div><div className="visual-orbit orbit-two"></div><div className="visual-glow"></div><img src="/lakshya-compass-logo.svg" alt="Lakshya Travel compass logo"/><span className="visual-tag tag-top"><MapPin size={13}/> INDIA, IN EVERY DIRECTION</span><span className="visual-tag tag-bottom"><Compass size={13}/> FIND YOUR OWN WAY</span></div>
+        <div className="hero-bg"></div><div className="hero-shade"></div><div className="hero-visual hero-poster-frame" aria-label="Travel More, Worry Less poster"><img src="/Travel%20More,%20Worry%20Less.png" alt="Travel More, Worry Less — Expedition with Lakshya travel poster"/></div>
         <div className="hero-content">
           <div className="eyebrow light"><span></span> A PERSONAL TRAVEL UNIVERSE</div>
           <h1>Go beyond<br/><em>the ordinary.</em></h1>
