@@ -3,3 +3,31 @@
 @media(max-width:640px){.topbar{height:68px}.brand{font-size:10px}.brand-mark{width:34px;height:34px}.mobile-toggle{display:block;color:#26382e}.nav{display:none;position:absolute;top:68px;left:0;right:0;background:#fbfaf6;padding:18px 7%;flex-direction:column;gap:0;box-shadow:0 12px 18px #0001}.nav-open{display:flex}.nav button{text-align:left;padding:14px 0;border-bottom:1px solid #e7e8e2;font-size:12px}.hero{min-height:670px;height:88vh;max-height:790px}.hero-content{padding:145px 7% 0}.hero h1{font-size:64px}.hero-content>p{font-size:13px}.hero-meta{margin-top:70px;flex-wrap:wrap;font-size:8px}.hero-index{right:5%;top:45%}.intro{display:block}.intro-label{margin-bottom:30px}.intro-stats{margin-top:35px}.section-wrap{padding:70px 6%}.section-heading{display:block}.section-heading>p{margin-top:18px}.section-heading h2,.community-intro h2{font-size:43px}.destination-grid{grid-template-columns:1fr;gap:30px}.destination-image{height:280px}.filter-list{flex-wrap:nowrap;overflow-x:auto;padding-bottom:7px}.filter{white-space:nowrap}.feature-band{grid-template-columns:1fr}.feature-image{min-height:300px}.feature-content{padding:65px 8%}.feature-content h2{font-size:57px}.story-grid{grid-template-columns:1fr;gap:35px}.story-img{height:250px}.planner-band{display:block;padding:60px 7%}.planner-icon{margin-bottom:28px}.planner-band h2{font-size:45px}.planner-band .btn{margin-top:25px}.community-section{grid-template-columns:1fr;gap:40px}.review-form{padding:26px 20px}.form-split{grid-template-columns:1fr 1fr;gap:10px}.review-preview-grid{grid-template-columns:1fr}.about-strip{padding:55px 7%;flex-wrap:wrap;gap:20px}.about-strip>div:nth-child(2){flex-basis:calc(100% - 100px)}.about-strip h2{font-size:36px}.about-social{margin-left:92px}.newsletter{display:block}.newsletter h2{font-size:36px}.newsletter .btn{margin-top:25px}.newsletter p{max-width:330px}footer{padding:25px 6%;flex-wrap:wrap}footer>span{order:3;width:100%;line-height:1.6}.destination-modal{grid-template-columns:1fr}.destination-modal>img{height:220px;min-height:0}.modal-body{padding:28px 24px}.modal-body h2{font-size:36px}}
 
 .photo-credit{position:absolute;right:12px;bottom:12px;z-index:2;max-width:58%;padding:5px 7px;background:rgba(12,20,15,.78);color:#fff;font-size:8px;line-height:1.4;text-align:right;text-decoration:none}.photo-credit:hover{text-decoration:underline}
+
+/* India state and city explorer */
+.india-explorer{background:#fbfaf6}
+.india-explorer-controls{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:18px;align-items:end;padding:22px;background:#f1f0e9;border:1px solid #e3e3dc}
+.india-explorer-controls label{display:flex;flex-direction:column;gap:9px;font-size:8px;letter-spacing:1.5px;color:#718076;font-weight:700}
+.india-explorer-controls select,.india-search input{width:100%;min-width:0;padding:13px 12px;border:1px solid #d8dcd4;background:#fffefa;color:#26372e;font-size:11px;outline-color:#9b7654}
+.india-search{display:flex;align-items:center;gap:9px;padding:0 12px;border:1px solid #d8dcd4;background:#fffefa;color:#778078}
+.india-search input{border:0;padding-left:0}
+.india-location-heading{display:flex;justify-content:space-between;align-items:end;margin:34px 0 18px}
+.india-location-heading span{display:flex;align-items:center;gap:7px;color:#78847a;font-size:10px}
+.india-location-heading h3{font:32px 'Playfair Display';font-weight:500;margin:7px 0 0}
+.india-location-heading small{font-size:9px;color:#7c877e}
+.india-place-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.india-place-card{background:#f2f1eb;border:1px solid #e7e7df;min-width:0}
+.india-place-photo{height:190px;display:block;position:relative;overflow:hidden;background:#e1e4dc}
+.india-place-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.india-place-photo:hover img{transform:scale(1.04)}
+.india-photo-placeholder{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;color:#879288}
+.india-photo-placeholder span{font-size:8px;letter-spacing:1.5px}
+.india-photo-open{position:absolute;right:10px;top:10px;background:#ffffffdf;border-radius:50%;width:30px;height:30px;display:grid;place-items:center;color:#293b30}
+.india-place-info{padding:15px}
+.india-place-info h4{font:20px 'Playfair Display';font-weight:500;margin:0 0 7px}
+.india-place-info span{display:block;color:#7a857c;font-size:9px}
+.india-place-info>a{display:inline-block;margin-top:13px;color:#8b6847;font-size:9px;text-decoration:none}
+.india-data-note{font-size:10px;line-height:1.8;color:#7c877e;margin-top:26px;max-width:800px}
+.india-no-results{padding:30px;text-align:center;color:#778078;font-size:12px}
+@media(max-width:700px){.india-explorer-controls{grid-template-columns:1fr;gap:13px;padding:16px}.india-place-grid{grid-template-columns:1fr 1fr;gap:12px}.india-place-photo{height:145px}.india-place-info{padding:12px}.india-place-info h4{font-size:17px}.india-location-heading h3{font-size:27px}}
+@media(max-width:420px){.india-place-grid{grid-template-columns:1fr}.india-place-photo{height:205px}}
