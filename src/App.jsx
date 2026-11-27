@@ -63,7 +63,7 @@ function App(){
 
     <main>
       <section className="hero">
-        <div className="hero-bg"></div><div className="hero-shade"></div><div className="hero-visual hero-poster-frame" aria-label="Travel More, Worry Less poster"><img src="/Travel%20More,%20Worry%20Less.png" alt="Travel More, Worry Less — Expedition with Lakshya travel poster"/></div>
+        <div className="hero-visual hero-poster-frame" aria-label="Travel More, Worry Less poster"><img src="/Travel%20More,%20Worry%20Less.png" alt="Travel More, Worry Less — Expedition with Lakshya travel poster"/></div><div className="hero-shade"></div>
         <div className="hero-content">
           <div className="eyebrow light"><span></span> A PERSONAL TRAVEL UNIVERSE</div>
           <h1>Go beyond<br/><em>the ordinary.</em></h1>
