@@ -63,7 +63,7 @@ function App(){
 
     <main>
       <section className="hero">
-        <div className="hero-bg"></div><img className="hero-poster" src="/travel-more-worry-less.jpg" alt="Travel more, worry less — Expedition with Lakshya"/><div className="hero-shade"></div>
+        <div className="hero-bg"></div><div className="hero-shade"></div><div className="hero-visual" aria-label="Expedition with Lakshya travel emblem"><div className="visual-orbit orbit-one"></div><div className="visual-orbit orbit-two"></div><div className="visual-glow"></div><img src="/lakshya-compass-logo.svg" alt="Lakshya Travel compass logo"/><span className="visual-tag tag-top"><MapPin size={13}/> INDIA, IN EVERY DIRECTION</span><span className="visual-tag tag-bottom"><Compass size={13}/> FIND YOUR OWN WAY</span></div>
         <div className="hero-content">
           <div className="eyebrow light"><span></span> A PERSONAL TRAVEL UNIVERSE</div>
           <h1>Go beyond<br/><em>the ordinary.</em></h1>
