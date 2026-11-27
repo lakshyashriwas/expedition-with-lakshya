@@ -47,7 +47,8 @@ export const indiaDirectory = [
 ["Ratlam",["Cactus Garden, Sailana","Bilpank Mahadev Temple"]],
 ["Mandsaur",["Pashupatinath Temple, Mandsaur","Gandhi Sagar Dam"]],
 ["Neemuch",["Sukhānand Mahadev Temple","Nava Toran Temple"]],
-["Khandwa",["Omkareshwar Jyotirlinga","Dada Dhuniwale Darbar"]],
+["Khandwa",["Dada Dhuniwale Darbar","Nagchun Dam"]],
+["Omkareshwar",["Omkareshwar Jyotirlinga Temple","Mamleshwar Jyotirlinga Temple","Omkareshwar Parikrama Path","Narmada-Kaveri Sangam","Siddhanath Temple","Gauri Somnath Temple"]],
 ["Burhanpur",["Asirgarh Fort","Shahi Qila, Burhanpur","Dargah-e-Hakimi"]],
 ["Khargone",["Maheshwar Fort","Ahilya Ghat","Sahastradhara, Maheshwar"]],
 ["Barwani",["Bawangaja Jain Tirth","Nagariya Hills"]],
@@ -66,8 +67,7 @@ export const indiaDirectory = [
 ["Umaria",["Bandhavgarh National Park","Badhavgarh Fort"]],
 ["Dindori",["Ghughwa Fossil National Park","Devnala Waterfall"]],
 ["Niwari",["Orchha Fort Complex","Chaturbhuj Temple","Ram Raja Temple"]],
-["Tikamgarh",["Kundeshwar Dham","Aharji Jain Tirth"]],
-["Barwani",["Bawangaja Jain Tirth","Nagariya Hills"]]
+["Tikamgarh",["Kundeshwar Dham","Aharji Jain Tirth"]]
 ]},
 {state:"Maharashtra",cities:[["Mumbai",["Gateway of India","Chhatrapati Shivaji Maharaj Terminus"]],["Pune",["Shaniwar Wada","Aga Khan Palace"]],["Nashik",["Trimbakeshwar Shiva Temple","Sula Vineyards"]],["Aurangabad",["Ajanta Caves","Ellora Caves"]],["Mahabaleshwar",["Venna Lake","Pratapgad"]]]},
 {state:"Manipur",cities:[["Imphal",["Kangla Fort","Shree Govindajee Temple"]],["Bishnupur",["Loktak Lake","Keibul Lamjao National Park"]]]},
