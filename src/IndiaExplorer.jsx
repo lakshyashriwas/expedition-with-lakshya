@@ -25,7 +25,7 @@ export default function IndiaExplorer(){
           const response=await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(place));
           if(!response.ok) continue;
           const data=await response.json();
-          if(!cancelled) setPhotos(old=>({...old,[place]:{image:data.thumbnail?.source||'',url:data.content_urls?.desktop?.page||'https://en.wikipedia.org/wiki/'+encodeURIComponent(place),description:data.extract||''}}));
+          if(!cancelled) setPhotos(old=>({...old,[place]:{image:data.originalimage?.source||data.thumbnail?.source||'',url:data.content_urls?.desktop?.page||'https://en.wikipedia.org/wiki/'+encodeURIComponent(place),description:data.extract||'',imageSource:'Wikipedia article'}}));
         }catch(e){ /* Keep the clean fallback card if Wikipedia is unavailable. */ }
       }
     }
@@ -48,7 +48,7 @@ export default function IndiaExplorer(){
           {photo?.image?<img src={photo.image} alt={place} loading="lazy"/>:<div className="india-photo-placeholder"><Compass size={30}/><span>PHOTO LOADING</span></div>}
           <span className="india-photo-open"><ExternalLink size={14}/></span>
         </a>
-        <div className="india-place-info"><h4>{place}</h4><span>{cityName}, {stateName}</span><a href={photo?.url||'https://en.wikipedia.org/wiki/'+encodeURIComponent(place)} target="_blank" rel="noreferrer">View place details ↗</a></div>
+        <div className="india-place-info"><h4>{place}</h4><span>{cityName}, {stateName}</span><a href={photo?.url||'https://en.wikipedia.org/wiki/'+encodeURIComponent(place)} target="_blank" rel="noreferrer">Photo source & place details ↗</a></div>
       </article>;
     })}</div>
     {!places.length&&<p className="india-no-results">No matching places in this city yet.</p>}
