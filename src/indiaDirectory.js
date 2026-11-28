@@ -1,3 +1,4 @@
+import { indiaExpansion } from './indiaExpansion';
 // Curated starter catalogue for all Indian States and Union Territories.
 // Add more cities and attractions to this file as the directory grows.
 export const indiaDirectory = [
@@ -136,5 +137,8 @@ export const indiaDirectory = [
   };
   const existing=new Set(entry.cities.map(city=>city.name.toLowerCase()));
   const additionsForState=(additions[entry.state]||[]).filter(([name])=>!existing.has(name.toLowerCase()));
-  return {...entry,cities:[...entry.cities,...additionsForState.map(([name,places])=>({name,places}))]};
+  const expanded=[...entry.cities,...additionsForState.map(([name,places])=>({name,places}))];
+  const known=new Set(expanded.map(city=>city.name.toLowerCase()));
+  const extra=(indiaExpansion[entry.state]||[]).filter(([name])=>!known.has(name.toLowerCase())).map(([name,places])=>({name,places}));
+  return {...entry,cities:[...expanded,...extra]};
 });
