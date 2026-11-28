@@ -19,6 +19,7 @@ export default function IndiaExplorer(){
   const [stateName,setStateName]=useState('Madhya Pradesh');
   const [cityName,setCityName]=useState('Bhopal');
   const [query,setQuery]=useState('');
+  const [guidePhotoFailed,setGuidePhotoFailed]=useState(false);
   const state=indiaDirectory.find(s=>s.state===stateName)||indiaDirectory[0];
   const city=state.cities.find(c=>c.name===cityName)||state.cities[0];
   const places=useMemo(()=>city.places.filter(p=>p.toLowerCase().includes(query.toLowerCase())),[city,query]);
@@ -27,12 +28,12 @@ export default function IndiaExplorer(){
   const mapQuery=encodeURIComponent(cityName+', '+stateName+', India');
   const mapUrl='https://www.google.com/maps/search/?api=1&query='+mapQuery;
   const mapEmbedUrl='https://www.google.com/maps?q='+mapQuery+'&output=embed';
-  const wikiSearch='https://en.wikipedia.org/w/index.php?search='+encodeURIComponent(cityName+' '+stateName);
   const tourismSearch='https://www.google.com/search?q='+encodeURIComponent(cityName+' '+stateName+' official tourism');
 
   useEffect(()=>{
     setCityName(state.cities[0].name);
     setQuery('');
+    setGuidePhotoFailed(false);
   },[stateName]);
 
   const highlights=(guide.highlights?.length?guide.highlights:city.places);
@@ -48,7 +49,7 @@ export default function IndiaExplorer(){
     </div>
     <div className="india-location-heading"><div><span><MapPin size={15}/>{stateName}</span><h3>{cityName}</h3></div><small>{places.length} featured places · {stateDestinationCount} regions · {statePlaceCount} listed attractions</small></div>
     <div className="india-city-guide">
-      {savedGuide?.image?<figure className="india-guide-visual"><img src={savedGuide.image} alt={savedGuide.imageAlt||cityName} loading="lazy"/><figcaption>Photo source: <a href={savedGuide.imageSource||savedGuide.source} target="_blank" rel="noreferrer">Madhya Pradesh Tourism ↗</a></figcaption></figure>
+      {savedGuide?.image&&!guidePhotoFailed?<figure className="india-guide-visual"><img src={savedGuide.image} alt={savedGuide.imageAlt||cityName} loading="lazy" onError={()=>setGuidePhotoFailed(true)}/><figcaption>Photo source: <a href={savedGuide.imageSource||savedGuide.source} target="_blank" rel="noreferrer">Madhya Pradesh Tourism ↗</a></figcaption></figure>
       :<figure className="india-guide-visual india-guide-map"><iframe title={cityName+' map preview'} src={mapEmbedUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade"/><figcaption>Interactive map preview · <a href={mapUrl} target="_blank" rel="noreferrer">Open Google Maps ↗</a></figcaption></figure>}
       <p className="india-guide-overview">{guide.overview}</p>
       <div className="india-guide-columns">
@@ -59,7 +60,6 @@ export default function IndiaExplorer(){
       </div>
       <div className="india-guide-links">
         <a href={mapUrl} target="_blank" rel="noreferrer">Google Maps & directions ↗</a>
-        <a href={wikiSearch} target="_blank" rel="noreferrer">Wikipedia reference search ↗</a>
         <a href={tourismSearch} target="_blank" rel="noreferrer">Official tourism information search ↗</a>
         {savedGuide?.source&&<a href={savedGuide.source} target="_blank" rel="noreferrer">Official destination guide ↗</a>}
       </div>
