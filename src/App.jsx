@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ArrowDown, ArrowRight, Search, MapPin, Menu, X, Play, Camera, Compass, Star, Download, Heart, Instagram, Youtube, Music2, Clock3, Wallet, Route, Send, ChevronRight, Globe2, Mountain, ShieldCheck } from 'lucide-react';
 import { supabase, supabaseConfigured } from './supabase';
 import IndiaExplorer from './IndiaExplorer';
