@@ -2,7 +2,10 @@
 // Keep facts, seasonal advice and transport details source-backed; expand state by state.
 export const cityGuides = {
   "Omkareshwar": {
-    overview: "A sacred Narmada island town associated with the Omkareshwar Jyotirlinga. The Narmada–Kaveri confluence, temple ghats and Ekatma Dham make it a major spiritual and heritage stop.",
+    image: "https://www.mptourism.com/web/image/catalog/blog-23/Ekatma-Dham-%20Omkareshwar.jpg",
+    imageAlt: "Ekatma Dham and Statue of Oneness, Omkareshwar",
+    imageSource: "https://www.mptourism.com/destination-omkareshwar.php",
+    overview: "Omkareshwar is a sacred island town on the Narmada, associated with one of India’s twelve Jyotirlingas. Its attractions include the Omkareshwar and Mamleshwar temples, riverside ghats, Siddhanath Temple and Ekatma Dham with the Statue of Oneness.",
     bestTime: "October to March is generally the most comfortable period. Shravan (July–August) and major religious occasions are especially busy.",
     howToReach: [
       "Air: Indore's Devi Ahilya Bai Holkar Airport is the nearest major airport (about 87 km).",
@@ -14,7 +17,10 @@ export const cityGuides = {
     source: "https://www.mptourism.com/destination-omkareshwar.php"
   },
   "Maihar": {
-    overview: "A spiritual and cultural town known for Maa Sharda Devi Temple on Trikoota Hill and for the musical legacy of the Maihar Gharana founded by Ustad Allauddin Khan.",
+    image: "https://www.mptourism.com/images/point-of-interest/maihar-poi1.webp",
+    imageAlt: "Maa Sharda Devi Temple on Trikoota Hill, Maihar",
+    imageSource: "https://www.mptourism.com/destination-maihar.php",
+    overview: "Maihar is known for Maa Sharda Devi Temple on Trikoota Hill, its ropeway and its musical heritage as the birthplace of the Maihar Gharana founded by Ustad Allauddin Khan.",
     bestTime: "October to March is generally pleasant for sightseeing. Navratri is vibrant but attracts large crowds.",
     howToReach: [
       "Air: The nearest airports listed by MP Tourism are Jabalpur (about 160 km) and Khajuraho (about 140 km).",
@@ -26,7 +32,10 @@ export const cityGuides = {
     source: "https://www.mptourism.com/destination-maihar.php"
   },
   "Pachmarhi": {
-    overview: "Known as the Queen of Satpura, Pachmarhi is a hill station surrounded by forested hills, caves, viewpoints and waterfalls. It is a gateway to the Satpura landscape.",
+    image: "https://www.mptourism.com/images/point-of-interest/Dhoopgarh.webp",
+    imageAlt: "Sunset view from Dhoopgarh, Pachmarhi",
+    imageSource: "https://www.mptourism.com/destination-panchmarhi.php",
+    overview: "Known as the Queen of Satpura, Pachmarhi is a hill station at about 1,607 metres, surrounded by forested hills, caves, viewpoints and waterfalls. Highlights include Dhoopgarh, Bee Falls, Apsara Vihar, Rajat Prapat and Jata Shankar Cave.",
     bestTime: "Pachmarhi can be visited year-round. Monsoon and winter bring especially scenic conditions; summer is often comparatively cooler than nearby lowland towns.",
     howToReach: [
       "Air: Bhopal's Raja Bhoj Airport is about 222 km away; onward road travel is required.",
@@ -38,7 +47,10 @@ export const cityGuides = {
     source: "https://www.mptourism.com/destination-panchmarhi.php"
   },
   "Maheshwar": {
-    overview: "A historic Narmada-side town associated with Rani Ahilyabai Holkar, known for its fort, river ghats, temples and Maheshwari handloom weaving.",
+    image: "https://www.mptourism.com/web/image/catalog/Blog%20Image/Ahilya-Bai-Fort%20and-Palace.jpg",
+    imageAlt: "Ahilya Bai Fort and Palace, Maheshwar",
+    imageSource: "https://www.mptourism.com/destination-maheshwar.php",
+    overview: "Maheshwar is a historic town on the Narmada, closely associated with Rani Ahilyabai Holkar. It is known for Ahilya Fort, river ghats, temples and Maheshwari handloom weaving.",
     bestTime: "October to March is the recommended period for comfortable sightseeing. Shivratri and Kartik Purnima can be busy festival periods.",
     howToReach: [
       "Road: MP Tourism lists Maheshwar as about 100 km by road from Indore and about 80 km from Omkareshwar.",
@@ -49,7 +61,10 @@ export const cityGuides = {
     source: "https://www.mptourism.com/destination-maheshwar.php"
   },
   "Ujjain": {
-    overview: "An ancient city on the Shipra River and a major pilgrimage destination, best known for Mahakaleshwar Jyotirlinga, its temples, ghats and the Mahakal Lok corridor.",
+    image: "https://www.mptourism.com/images/point-of-interest/Mahakaleshwar%20Temple.webp",
+    imageAlt: "Mahakaleshwar Temple, Ujjain",
+    imageSource: "https://www.mptourism.com/destination-ujjain.php",
+    overview: "Ujjain is an ancient temple city on the Shipra River, known for Mahakaleshwar Jyotirlinga, Mahakal Lok, Kal Bhairav and Harsiddhi temples, Ram Ghat and the Vedh Shala observatory.",
     bestTime: "Ujjain can be visited throughout the year. Mahashivratri, Shravan Mondays, Nag Panchami and Kartik Mela are important but particularly crowded periods.",
     howToReach: [
       "Air: Indore's Devi Ahilya Bai International Airport is about 55 km away.",
