@@ -1,28 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-<title id="title">Lakshya Adventure Compass</title><desc id="desc">A premium navy and teal mountain emblem with a champagne gold compass.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">LAKSHYA mountain travel logo</title><desc id="desc">Golden sunset behind snow-capped mountains, dark teal pine forest, and the name LAKSHYA in gold.</desc>
 <defs>
- <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102c3a"/><stop offset="1" stop-color="#174b50"/></linearGradient>
- <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0d6a0"/><stop offset=".55" stop-color="#c9a36a"/><stop offset="1" stop-color="#9c7542"/></linearGradient>
- <linearGradient id="peak" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d7e4df"/><stop offset="1" stop-color="#6d9990"/></linearGradient>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#0b3447"/><stop offset=".55" stop-color="#d86f35"/><stop offset="1" stop-color="#f7b94d"/></linearGradient>
+ <radialGradient id="sun"><stop stop-color="#fff0a6"/><stop offset="1" stop-color="#f3a52e"/></radialGradient>
+ <linearGradient id="mount" x2="0" y2="1"><stop stop-color="#dce9e8"/><stop offset=".38" stop-color="#507887"/><stop offset="1" stop-color="#123747"/></linearGradient>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff0b3"/><stop offset=".45" stop-color="#e6b85e"/><stop offset="1" stop-color="#a86b25"/></linearGradient>
+ <linearGradient id="forest" x2="0" y2="1"><stop stop-color="#145052"/><stop offset="1" stop-color="#071d2a"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feGaussianBlur in="SourceAlpha" stdDeviation="9"/><feOffset dy="8"/><feComponentTransfer><feFuncA type="linear" slope=".65"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
-<circle cx="256" cy="256" r="249" fill="url(#bg)"/>
-<circle cx="256" cy="256" r="226" fill="none" stroke="url(#gold)" stroke-width="7"/>
-<circle cx="256" cy="256" r="207" fill="none" stroke="#c9a36a" stroke-width="1.5" opacity=".65"/>
-<g stroke="url(#gold)" stroke-width="5" stroke-linecap="round">
- <path d="M256 38v34M256 440v34M38 256h34M440 256h34"/>
- <path d="m102 102 24 24m260 260 24 24M410 102l-24 24M126 386l-24 24" stroke-width="3"/>
-</g>
-<g fill="url(#gold)">
- <path d="m256 65 20 125-20-18-20 18z"/>
- <path d="m256 447-20-125 20 18 20-18z"/>
- <path d="m65 256 125-20-18 20 18 20z"/>
- <path d="m447 256-125 20 18-20-18-20z"/>
-</g>
-<circle cx="256" cy="256" r="124" fill="#102c3a" stroke="#c9a36a" stroke-width="3"/>
-<path d="m91 345 100-127 51 61 51-91 128 157H91Z" fill="#1b5a5b"/>
-<path d="m159 259 32-41 51 61-28-17-19 12-17-9zm83-20 51-51 28 40-22-10-18 12-17-9z" fill="url(#peak)"/>
-<path d="M91 345h330" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
-<path d="M146 373q110 38 220 0" fill="none" stroke="url(#gold)" stroke-width="3" stroke-linecap="round"/>
-<circle cx="256" cy="256" r="8" fill="#f3dfb9" stroke="#c9a36a" stroke-width="3"/>
-<path d="M256 244v-25" stroke="#f3dfb9" stroke-width="3" stroke-linecap="round"/>
+<rect width="1200" height="700" rx="40" fill="#092838"/><rect x="22" y="22" width="1156" height="656" rx="28" fill="url(#sky)"/>
+<circle cx="600" cy="230" r="150" fill="url(#sun)" opacity=".96"/>
+<path d="M22 390 Q180 300 300 360 T580 350 T900 340 T1178 370 V560 H22Z" fill="#d98546" opacity=".32"/>
+<path d="M22 470 L205 300 295 390 455 170 600 355 755 205 930 390 1030 300 1178 450 V590 H22Z" fill="url(#mount)"/>
+<path d="M335 302 L455 170 540 278 493 255 470 276 447 245 425 278 400 260Z M660 310 L755 205 855 322 812 291 787 302 762 270 738 295 710 278Z" fill="#f2f0dc"/>
+<path d="M22 470 L205 300 295 390 455 170 600 355 755 205 930 390 1030 300 1178 450" fill="none" stroke="#f7e4b4" stroke-width="5" opacity=".6"/>
+<path d="M22 450 Q150 390 260 455 T520 440 T790 450 T1178 430 V678 H22Z" fill="url(#forest)"/>
+<g fill="#08232f"><path d="M70 590l55-190 55 190h-35l48 88H57l48-88z"/><path d="M990 610l60-220 60 220h-38l50 68H975l48-68z"/><path d="M190 620l45-155 45 155h-30l38 58h-106l38-58z"/><path d="M870 620l48-170 48 170h-32l40 58H862l40-58z"/></g>
+<g fill="#174b50"><path d="M310 630l38-130 38 130h-25l32 48h-90l32-48z"/><path d="M760 630l38-130 38 130h-25l32 48h-90l32-48z"/></g>
+<g fill="none" stroke="#e7bd70" stroke-width="3" opacity=".8"><path d="M120 95q18-18 36 0q18-18 36 0"/><path d="M1000 120q16-16 32 0q16-16 32 0"/></g>
+<text x="600" y="565" text-anchor="middle" font-family="Georgia,serif" font-size="122" font-weight="bold" letter-spacing="8" fill="#071e2a" opacity=".75" filter="url(#shadow)">LAKSHYA</text>
+<text x="600" y="550" text-anchor="middle" font-family="Georgia,serif" font-size="122" font-weight="bold" letter-spacing="8" fill="url(#gold)" stroke="#fff0b3" stroke-width="1.5">LAKSHYA</text>
+<path d="M170 590 Q390 620 600 585 Q810 620 1030 590" fill="none" stroke="#d7a653" stroke-width="5" stroke-linecap="round"/>
 </svg>
