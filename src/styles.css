@@ -220,3 +220,19 @@ button:focus-visible,a:focus-visible{outline:2px solid #c39a5b;outline-offset:3p
  .nav button{border-color:#e8e0d3}
  .mobile-toggle{color:var(--brand-deep)}
 }
+
+
+/* Spotify travel playlist section */
+.music-section{background:#f3f0e8}
+.music-section .section-heading h2 em{color:#b18a52}
+.music-player-wrap{display:grid;grid-template-columns:.72fr 1.28fr;gap:38px;align-items:center;background:linear-gradient(125deg,#102c3a,#174b50);padding:34px;color:#fff;border:1px solid rgba(201,163,106,.35);box-shadow:0 18px 42px rgba(16,44,58,.12)}
+.music-copy{padding:12px 5% 12px 2%}
+.music-icon{width:54px;height:54px;border:1px solid rgba(229,193,138,.65);border-radius:50%;display:grid;place-items:center;color:#e5c18a;margin-bottom:22px}
+.music-kicker{font-size:8px;letter-spacing:2px;color:#e5c18a}
+.music-copy h3{font:clamp(34px,4vw,48px)/1.08 'Playfair Display',serif;font-weight:500;margin:13px 0;color:#fffaf2}
+.music-copy h3 em{color:#e5c18a}
+.music-copy p{font-size:12px;line-height:1.9;color:#e0e8e5;max-width:300px}
+.music-copy>a{display:inline-flex;align-items:center;gap:12px;margin-top:18px;color:#f2d7a8;text-decoration:none;font-size:11px;border-bottom:1px solid rgba(229,193,138,.6);padding-bottom:7px}
+.spotify-embed{min-width:0;overflow:hidden;border-radius:12px;background:#102c3a}
+.spotify-embed iframe{display:block;border:0;border-radius:12px;max-width:100%}
+@media(max-width:760px){.music-player-wrap{grid-template-columns:1fr;gap:25px;padding:25px 18px}.music-copy{padding:5px}.spotify-embed iframe{height:352px}}
