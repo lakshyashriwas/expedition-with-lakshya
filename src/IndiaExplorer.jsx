@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { MapPin, Search, ExternalLink, Compass } from 'lucide-react';
 import { indiaDirectory } from './indiaDirectory';
 import { cityGuides } from './cityGuides';
-import { indiaExpansion } from './indiaExpansion';
 
 const makeFallbackGuide = (city, state) => ({
   overview: `${city} is a destination in ${state}, India. Explore the notable places listed in this guide and use the linked map and reference searches to check current visitor information before travelling.`,
