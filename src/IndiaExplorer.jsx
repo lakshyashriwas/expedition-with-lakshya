@@ -36,6 +36,8 @@ export default function IndiaExplorer(){
   },[stateName]);
 
   const highlights=(guide.highlights?.length?guide.highlights:city.places);
+  const stateDestinationCount=state.cities.length;
+  const statePlaceCount=state.cities.reduce((sum,item)=>sum+item.places.length,0);
 
   return <section className="india-explorer section-wrap" id="india-explorer">
     <div className="section-heading"><div><div className="eyebrow"><span/> EXPLORE THE COUNTRY</div><h2>Discover <em>India.</em></h2></div><p>Choose a state, explore its cities<br/>and find places worth visiting.</p></div>
@@ -44,7 +46,7 @@ export default function IndiaExplorer(){
       <label>SELECT CITY / REGION<select value={cityName} onChange={e=>setCityName(e.target.value)}>{state.cities.map(c=><option key={c.name} value={c.name}>{c.name}</option>)}</select></label>
       <div className="india-search"><Search size={17}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search tourist places..."/></div>
     </div>
-    <div className="india-location-heading"><div><span><MapPin size={15}/>{stateName}</span><h3>{cityName}</h3></div><small>{places.length} featured places</small></div>
+    <div className="india-location-heading"><div><span><MapPin size={15}/>{stateName}</span><h3>{cityName}</h3></div><small>{places.length} featured places · {stateDestinationCount} regions · {statePlaceCount} listed attractions</small></div>
     <div className="india-city-guide">
       {savedGuide?.image?<figure className="india-guide-visual"><img src={savedGuide.image} alt={savedGuide.imageAlt||cityName} loading="lazy"/><figcaption>Photo source: <a href={savedGuide.imageSource||savedGuide.source} target="_blank" rel="noreferrer">Madhya Pradesh Tourism ↗</a></figcaption></figure>
       :<figure className="india-guide-visual india-guide-map"><iframe title={cityName+' map preview'} src={mapEmbedUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade"/><figcaption>Interactive map preview · <a href={mapUrl} target="_blank" rel="noreferrer">Open Google Maps ↗</a></figcaption></figure>}
@@ -73,6 +75,6 @@ export default function IndiaExplorer(){
       </article>;
     })}</div>
     {!places.length&&<p className="india-no-results">No matching places in this city yet.</p>}
-    <p className="india-data-note">Location facts and photos are added as they are verified. Maps and reference links help visitors check current information; they do not replace a researched travel guide.</p>
+    <div className="india-source-panel"><div><strong>Keep exploring {stateName}</strong><p>This directory now includes {stateDestinationCount} city/region entries and {statePlaceCount} named attractions for this state or UT. It is a curated discovery index, not a complete list of every settlement or a substitute for checking current local conditions.</p></div><div className="india-source-links"><a href="https://www.incredibleindia.gov.in/en/destinations/states" target="_blank" rel="noreferrer">Official Incredible India state & UT directory ↗</a><a href="https://icpb.in/indian-state-tourism" target="_blank" rel="noreferrer">State tourism board links ↗</a></div></div><p className="india-data-note">Destination names are a curated discovery shortlist. Exact photos and full source-verified city guides are still being expanded; no unrelated image is presented as a location photo.</p>
   </section>;
 }
