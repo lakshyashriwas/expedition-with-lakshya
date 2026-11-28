@@ -55,7 +55,7 @@ function App(){
     <header className="topbar">
       <a className="brand" href="#"><span className="brand-mark"><img src="/lakshya-compass-logo.svg" alt="Lakshya Travel logo"/></span><span>EXPEDITION <i>WITH LAKSHYA</i></span></a>
       <nav className={mobileOpen?'nav nav-open':'nav'}>
-        <button onClick={()=>scrollTo('destinations')}>Destinations</button><button onClick={()=>scrollTo('journal')}>Travel Journal</button><button onClick={()=>scrollTo('gallery')}>Gallery</button><button onClick={()=>scrollTo('community')}>Community</button>
+        <button onClick={()=>scrollTo('destinations')}>Destinations</button><button onClick={()=>scrollTo('journal')}>Travel Journal</button><button onClick={()=>scrollTo('gallery')}>Gallery</button><button onClick={()=>scrollTo('music')}>Music</button><button onClick={()=>scrollTo('community')}>Community</button>
       </nav>
       <button className="nav-cta" onClick={()=>scrollTo('destinations')}>Start exploring <ArrowUpRightIcon/></button>
       <button className="mobile-toggle" aria-label="Toggle menu" onClick={()=>setMobileOpen(!mobileOpen)}>{mobileOpen?<X/>:<Menu/>}</button>
