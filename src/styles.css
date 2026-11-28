@@ -266,3 +266,12 @@ button:focus-visible,a:focus-visible{outline:2px solid #c39a5b;outline-offset:3p
 .india-guide-source{display:inline-block;margin-top:18px;font-size:10px;color:#a17b49;text-decoration:none;border-bottom:1px solid #c9b28c;padding-bottom:3px}
 .india-guide-pending{padding:16px 18px;margin:0 0 24px;background:#f3f0e8;border-left:2px solid #c39a5b;color:#6d786f;font-size:12px;line-height:1.7}
 @media(max-width:640px){.india-city-guide{padding:18px 16px}.india-guide-columns{grid-template-columns:1fr;gap:14px}.india-guide-overview{font-size:14px}}
+
+
+/* Static, source-credited destination photography and content */
+.india-guide-visual{margin:0 0 22px;max-width:760px;background:#e8e2d6}
+.india-guide-visual img{display:block;width:100%;max-height:360px;object-fit:cover}
+.india-guide-visual figcaption{padding:8px 11px;color:#6f7774;font-size:9px;letter-spacing:.3px}
+.india-guide-visual figcaption a{color:#9a7546;text-decoration:none}
+.india-place-icon{min-height:92px;display:grid;place-items:center;background:linear-gradient(145deg,#e5e1d7,#d7e2dc);color:#537078}
+.india-place-info>a{display:inline-flex;align-items:center;gap:5px}
