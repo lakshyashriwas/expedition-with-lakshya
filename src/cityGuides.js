@@ -75,4 +75,46 @@ export const cityGuides = {
     nearby: ["Indore", "Omkareshwar", "Dewas"],
     source: "https://www.mptourism.com/destination-ujjain.php"
   }
+  ,
+  "Bhopal": {
+    overview: "Bhopal, the City of Lakes, combines the historic old city with newer neighbourhoods around Upper Lake and Lower Lake. Its heritage reflects the era of the Begums of Bhopal.",
+    bestTime: "MP Tourism recommends August to February; monsoon and winter bring greener surroundings and fuller lakes.",
+    howToReach: ["Air: Raja Bhoj Airport is about 15 km from the city centre.", "Rail: Bhopal Junction and Rani Kamlapati are major railway stations.", "Road: State and private bus services connect Bhopal with regional and interstate destinations."],
+    highlights: ["Upper Lake (Bada Talab)", "Lower Lake", "Gohar Mahal", "Van Vihar National Park", "Indira Gandhi Rashtriya Manav Sangrahalaya", "Madhya Pradesh Tribal Museum", "Taj-ul-Masajid", "Birla Mandir"],
+    nearby: ["Bhojpur Temple", "Bhimbetka Rock Shelters", "Sanchi", "Jagdishpur"],
+    source: "https://www.mptourism.com/destination-bhopal.php"
+  },
+  "Jabalpur": {
+    overview: "Jabalpur is a major Narmada-side city known for the marble cliffs and river scenery of Bhedaghat, Dhuandhar Falls, historic temples and nearby nature destinations.",
+    bestTime: "MP Tourism highlights the monsoon season (July to September) for waterfalls and the surrounding landscape. Check local conditions before visiting river or waterfall areas.",
+    howToReach: ["Air: Dumna Airport is about 20 km from the city.", "Rail: Jabalpur Railway Station is a major West Central Railway station with connections to several cities.", "Road: Jabalpur is connected by road to other major Madhya Pradesh destinations; check current bus schedules."],
+    highlights: ["Dhuandhar Falls", "Marble Rocks, Bhedaghat", "Chausath Yogini Temple", "Balancing Rock", "Dumna Nature Park", "Kachnar City Shiva Temple"],
+    nearby: ["Bargi Dam", "Mandla Fort", "Pachmarhi", "Kanha National Park"],
+    source: "https://www.mptourism.com/destination-jabalpur.php"
+  },
+  "Khajuraho": {
+    overview: "Khajuraho is renowned for its UNESCO-listed Group of Monuments, built by the Chandela dynasty between 950 and 1050 CE. The temple groups are celebrated for Nagara-style architecture and intricate stone sculpture.",
+    bestTime: "The Khajuraho Dance Festival is held around February; check the official event calendar for current dates before planning.",
+    howToReach: ["Air: Khajuraho has a domestic airport about 2 km from the temple sites.", "Rail: Khajuraho railway station is about 5 km from the main town; Mahoba is a nearby major railhead.", "Road: Bus and taxi connections link Khajuraho with nearby towns and highway routes."],
+    highlights: ["Western Group of Temples", "Kandariya Mahadev Temple", "Lakshmana Temple", "Eastern Group of Temples", "Southern Group of Temples", "Adivart Tribal and Folk Art Museum"],
+    nearby: ["Panna National Park", "Raneh Falls", "Bhimkund", "Orchha"],
+    source: "https://www.mptourism.com/destination-khajuraho.php"
+  },
+  "Gwalior": {
+    overview: "Gwalior is a historic city shaped by warrior rulers, musicians, artists and successive dynasties. Its best-known landmark is the hilltop Gwalior Fort, surrounded by palaces, temples and heritage sites.",
+    bestTime: "October to March is recommended by MP Tourism for more comfortable sightseeing; the summer heat can make outdoor visits difficult.",
+    howToReach: ["Air: Gwalior Airport serves domestic connections; flight schedules vary.", "Rail: Gwalior Junction is connected to major rail routes.", "Road: Gwalior is connected by national and state highways with nearby cities."],
+    highlights: ["Gwalior Fort", "Gujari Mahal", "Sas Bahu Temples", "Teli Ka Mandir", "Gopachal Jain Rock-Cut Sculptures", "Gurudwara Data Bandi Chhor"],
+    nearby: ["Bateshwar Temples", "Mitawali Chausath Yogini Temple", "Padawali", "Datia", "Shivpuri"],
+    source: "https://www.mptourism.com/destination-gwalior.php"
+  },
+  "Mandu": {
+    overview: "Mandu, also called the City of Joy, is a historic plateau town known for its medieval forts, palaces, gateways and landscape views. Its architecture includes the famous Jahaz Mahal and Roopmati's Pavilion.",
+    bestTime: "MP Tourism recommends July to March. Monsoon brings lush green views; summers can be very hot.",
+    howToReach: ["Air: Indore's Ahilyabai Holkar Airport is about 95 km away.", "Rail: Ratlam (about 130 km) and Indore are the nearest practical railheads.", "Road: Mandu is reached by road from Indore and nearby towns; confirm current local transport."],
+    highlights: ["Jahaz Mahal", "Roopmati's Pavilion", "Baz Bahadur Palace", "Hindola Mahal", "Hoshang Shah's Tomb", "Ashrafi Mahal"],
+    nearby: ["Maheshwar", "Indore", "Dhar", "Omkareshwar"],
+    source: "https://www.mptourism.com/destination-mandu.php"
+  }
+
 };
