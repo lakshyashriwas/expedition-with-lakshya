@@ -3,6 +3,18 @@ import { MapPin, Search, ExternalLink, Compass } from 'lucide-react';
 import { indiaDirectory } from './indiaDirectory';
 import { cityGuides } from './cityGuides';
 
+const makeFallbackGuide = (city, state) => ({
+  overview: `${city} is a destination in ${state}, India. Explore the notable places listed in this guide and use the linked map and reference searches to check current visitor information before travelling.`,
+  bestTime: `The best season depends on local weather, rainfall and festivals in ${city}. Check the current forecast and local tourism advisories before choosing travel dates; seasonal conditions can change.`,
+  howToReach: [
+    `Open the map directions for ${city} to compare current road routes and travel time from your starting point.`,
+    `Search current train connections to the nearest railway station serving ${city}; schedules and services may change.`,
+    `Check the nearest operational airport and onward road transfer before booking flights.`
+  ],
+  highlights: [],
+  nearby: []
+});
+
 export default function IndiaExplorer(){
   const [stateName,setStateName]=useState('Madhya Pradesh');
   const [cityName,setCityName]=useState('Bhopal');
@@ -10,12 +22,20 @@ export default function IndiaExplorer(){
   const state=indiaDirectory.find(s=>s.state===stateName)||indiaDirectory[0];
   const city=state.cities.find(c=>c.name===cityName)||state.cities[0];
   const places=useMemo(()=>city.places.filter(p=>p.toLowerCase().includes(query.toLowerCase())),[city,query]);
-  const guide=cityGuides[cityName];
+  const savedGuide=cityGuides[cityName];
+  const guide=savedGuide||makeFallbackGuide(cityName,stateName);
+  const mapQuery=encodeURIComponent(cityName+', '+stateName+', India');
+  const mapUrl='https://www.google.com/maps/search/?api=1&query='+mapQuery;
+  const mapEmbedUrl='https://www.google.com/maps?q='+mapQuery+'&output=embed';
+  const wikiSearch='https://en.wikipedia.org/w/index.php?search='+encodeURIComponent(cityName+' '+stateName);
+  const tourismSearch='https://www.google.com/search?q='+encodeURIComponent(cityName+' '+stateName+' official tourism');
 
   useEffect(()=>{
     setCityName(state.cities[0].name);
     setQuery('');
   },[stateName]);
+
+  const highlights=(guide.highlights?.length?guide.highlights:city.places);
 
   return <section className="india-explorer section-wrap" id="india-explorer">
     <div className="section-heading"><div><div className="eyebrow"><span/> EXPLORE THE COUNTRY</div><h2>Discover <em>India.</em></h2></div><p>Choose a state, explore its cities<br/>and find places worth visiting.</p></div>
@@ -25,27 +45,34 @@ export default function IndiaExplorer(){
       <div className="india-search"><Search size={17}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search tourist places..."/></div>
     </div>
     <div className="india-location-heading"><div><span><MapPin size={15}/>{stateName}</span><h3>{cityName}</h3></div><small>{places.length} featured places</small></div>
-    {guide?<div className="india-city-guide">
-      {guide.image&&<figure className="india-guide-visual"><img src={guide.image} alt={guide.imageAlt||cityName} loading="lazy"/><figcaption>Photo: Madhya Pradesh Tourism · <a href={guide.imageSource||guide.source} target="_blank" rel="noreferrer">Source ↗</a></figcaption></figure>}
+    <div className="india-city-guide">
+      {savedGuide?.image?<figure className="india-guide-visual"><img src={savedGuide.image} alt={savedGuide.imageAlt||cityName} loading="lazy"/><figcaption>Photo source: <a href={savedGuide.imageSource||savedGuide.source} target="_blank" rel="noreferrer">Madhya Pradesh Tourism ↗</a></figcaption></figure>
+      :<figure className="india-guide-visual india-guide-map"><iframe title={cityName+' map preview'} src={mapEmbedUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade"/><figcaption>Interactive map preview · <a href={mapUrl} target="_blank" rel="noreferrer">Open Google Maps ↗</a></figcaption></figure>}
       <p className="india-guide-overview">{guide.overview}</p>
       <div className="india-guide-columns">
         <div><h4>Best time to visit</h4><p>{guide.bestTime}</p></div>
         <div><h4>How to reach</h4><ul>{guide.howToReach.map(item=><li key={item}>{item}</li>)}</ul></div>
-        <div><h4>Top attractions</h4><ul>{guide.highlights.map(item=><li key={item}>{item}</li>)}</ul></div>
-        <div><h4>Nearby places</h4><p>{guide.nearby.join(" · ")}</p></div>
+        <div><h4>Top attractions</h4><ul>{highlights.map(item=><li key={item}>{item}</li>)}</ul></div>
+        <div><h4>Nearby places & exploration</h4><p>{guide.nearby?.length?guide.nearby.join(' · '):'Use the nearby-places map search to discover other destinations around '+cityName+'.'}</p><a href={'https://www.google.com/maps/search/tourist+places+near+'+mapQuery} target="_blank" rel="noreferrer">Explore nearby places ↗</a></div>
       </div>
-      <a className="india-guide-source" href={guide.source} target="_blank" rel="noreferrer">Read official Madhya Pradesh Tourism guide ↗</a>
-    </div>:<p className="india-guide-pending">Detailed guide and verified photo for {cityName} are being added. The place list and map links are available below.</p>}
+      <div className="india-guide-links">
+        <a href={mapUrl} target="_blank" rel="noreferrer">Google Maps & directions ↗</a>
+        <a href={wikiSearch} target="_blank" rel="noreferrer">Wikipedia reference search ↗</a>
+        <a href={tourismSearch} target="_blank" rel="noreferrer">Official tourism information search ↗</a>
+        {savedGuide?.source&&<a href={savedGuide.source} target="_blank" rel="noreferrer">Official destination guide ↗</a>}
+      </div>
+      {!savedGuide&&<p className="india-data-note">This is a starter guide assembled from the destination directory and live map/reference links. It is not yet a fully researched, source-verified guide. Exact destination photos and locally verified details are being added in batches; no unrelated photo is shown as if it belongs to this place.</p>}
+    </div>
     <div className="india-place-grid">{places.map(place=>{
-      const mapUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place+', '+cityName+', '+stateName);
+      const placeMapUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place+', '+cityName+', '+stateName);
       return <article className="india-place-card" key={place}>
         <div className="india-place-icon"><Compass size={25}/></div>
         <div className="india-place-info"><h4>{place}</h4><span>{cityName}, {stateName}</span>
-          <a href={mapUrl} target="_blank" rel="noreferrer">Map & directions ↗ <ExternalLink size={12}/></a>
+          <a href={placeMapUrl} target="_blank" rel="noreferrer">Map & directions ↗ <ExternalLink size={12}/></a>
         </div>
       </article>;
     })}</div>
     {!places.length&&<p className="india-no-results">No matching places in this city yet.</p>}
-    <p className="india-data-note">Location photos and travel details are saved as website content when verified. This guide section does not search Wikipedia or load photos dynamically. More destinations are being researched and added in batches.</p>
+    <p className="india-data-note">Location facts and photos are added as they are verified. Maps and reference links help visitors check current information; they do not replace a researched travel guide.</p>
   </section>;
 }
