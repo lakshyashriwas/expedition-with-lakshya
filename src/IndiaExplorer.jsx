@@ -15,6 +15,24 @@ const makeFallbackGuide = (city, state) => ({
   nearby: []
 });
 
+const attractionPhotos = {
+  "Mahakaleshwar Jyotirlinga": {
+    src: "https://www.mptourism.com/images/point-of-interest/Mahakaleshwar%20Temple.webp",
+    credit: "Madhya Pradesh Tourism",
+    source: "https://www.mptourism.com/destination-ujjain.php"
+  },
+  "Ram Ghat": {
+    src: "https://upload.wikimedia.org/wikipedia/commons/4/45/Ram_Ghat_ujjain.jpg",
+    credit: "Puneet Neeraj 024 · CC BY-SA 4.0",
+    source: "https://commons.wikimedia.org/wiki/File:Ram_Ghat_ujjain.jpg"
+  },
+  "Kal Bhairav Temple": {
+    src: "https://upload.wikimedia.org/wikipedia/commons/9/96/Kalabhairava_Temple_Ujjain.JPG",
+    credit: "LRBurdak · CC BY-SA 4.0",
+    source: "https://commons.wikimedia.org/wiki/File:Kalabhairava_Temple_Ujjain.JPG"
+  }
+};
+
 export default function IndiaExplorer(){
   const [stateName,setStateName]=useState('Madhya Pradesh');
   const [cityName,setCityName]=useState('Bhopal');
@@ -67,9 +85,14 @@ export default function IndiaExplorer(){
     </div>
     <div className="india-place-grid">{places.map(place=>{
       const placeMapUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place+', '+cityName+', '+stateName);
+      const photo=stateName==="Madhya Pradesh"&&cityName==="Ujjain"?attractionPhotos[place]:null;
       return <article className="india-place-card" key={place}>
-        <div className="india-place-icon"><Compass size={25}/></div>
+        {photo?<a className="india-place-photo" href={photo.source} target="_blank" rel="noreferrer" aria-label={'Photo source for '+place}>
+          <img src={photo.src} alt={place+', '+cityName} loading="lazy" onError={e=>{e.currentTarget.style.display='none';e.currentTarget.parentElement.classList.add('photo-unavailable')}}/>
+          <span className="india-photo-credit">{photo.credit}</span>
+        </a>:<div className="india-place-photo india-place-photo-empty"><Compass size={25}/><span>Photo not yet verified</span></div>}
         <div className="india-place-info"><h4>{place}</h4><span>{cityName}, {stateName}</span>
+          {photo&&<a className="india-photo-source" href={photo.source} target="_blank" rel="noreferrer">Photo & licence ↗</a>}
           <a href={placeMapUrl} target="_blank" rel="noreferrer">Map & directions ↗ <ExternalLink size={12}/></a>
         </div>
       </article>;
