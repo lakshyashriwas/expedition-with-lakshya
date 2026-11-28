@@ -3,6 +3,40 @@ import { MapPin, Search, ExternalLink, Compass, RefreshCw } from 'lucide-react';
 import { indiaDirectory } from './indiaDirectory';
 import { cityGuides } from './cityGuides';
 
+const commonsApi = 'https://commons.wikimedia.org/w/api.php';
+
+async function findCommonsPhoto(place, cityName, stateName) {
+  const params = new URLSearchParams({
+    action: 'query',
+    generator: 'search',
+    gsrsearch: `filetype:bitmap "${place}" "${cityName}" "${stateName}"`,
+    gsrnamespace: '6',
+    gsrlimit: '1',
+    prop: 'imageinfo',
+    iiprop: 'url',
+    iiurlwidth: '900',
+    format: 'json',
+    formatversion: '2',
+    origin: '*'
+  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12000);
+  try {
+    const response = await fetch(`${commonsApi}?${params.toString()}`, {
+      signal: controller.signal,
+      headers: { Accept: 'application/json' }
+    });
+    if (!response.ok) throw new Error('Commons image search failed');
+    const data = await response.json();
+    const page = data.query?.pages?.find(item => item.imageinfo?.[0]?.thumburl || item.imageinfo?.[0]?.url);
+    const image = page?.imageinfo?.[0]?.thumburl || page?.imageinfo?.[0]?.url;
+    if (!image) throw new Error('No matching Commons photo');
+    return image;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 export default function IndiaExplorer(){
   const [stateName,setStateName]=useState('Madhya Pradesh');
   const [cityName,setCityName]=useState('Bhopal');
@@ -26,17 +60,10 @@ export default function IndiaExplorer(){
     async function load(){
       await Promise.allSettled(pending.map(async place=>{
         try{
-          const response=await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(place));
-          if(!response.ok) throw new Error('No article image');
-          const data=await response.json();
-          const image=data.originalimage?.source||data.thumbnail?.source||'';
+          const image=await findCommonsPhoto(place,cityName,stateName);
           if(!cancelled){
-            if(image){
-              setPhotos(old=>({...old,[place]:{image,imageSource:'Wikipedia article'}}));
-              setPhotoStatus(old=>({...old,[place]:'ready'}));
-            }else{
-              setPhotoStatus(old=>({...old,[place]:'unavailable'}));
-            }
+            setPhotos(old=>({...old,[place]:{image}}));
+            setPhotoStatus(old=>({...old,[place]:'ready'}));
           }
         }catch{
           if(!cancelled) setPhotoStatus(old=>({...old,[place]:'unavailable'}));
@@ -45,17 +72,13 @@ export default function IndiaExplorer(){
     }
     if(pending.length) load();
     return ()=>{cancelled=true;};
-  },[places]);
+  },[places,cityName,stateName]);
 
   const retryPhoto=async place=>{
     setPhotoStatus(old=>({...old,[place]:'loading'}));
     try{
-      const response=await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(place));
-      if(!response.ok) throw new Error('No image');
-      const data=await response.json();
-      const image=data.originalimage?.source||data.thumbnail?.source||'';
-      if(!image) throw new Error('No image');
-      setPhotos(old=>({...old,[place]:{image,imageSource:'Wikipedia article'}}));
+      const image=await findCommonsPhoto(place,cityName,stateName);
+      setPhotos(old=>({...old,[place]:{image}}));
       setPhotoStatus(old=>({...old,[place]:'ready'}));
     }catch{setPhotoStatus(old=>({...old,[place]:'unavailable'}));}
   };
@@ -86,18 +109,18 @@ export default function IndiaExplorer(){
         <a className="india-place-photo" href={mapUrl} target="_blank" rel="noreferrer">
           {photo?.image?<img src={photo.image} alt={place} loading="lazy" onError={()=>{setPhotos(old=>{const next={...old};delete next[place];return next;});setPhotoStatus(old=>({...old,[place]:'unavailable'}));}}/>:
             <div className={'india-photo-placeholder '+(status==='unavailable'?'is-unavailable':'')}>
-              <Compass size={30}/><span>{status==='unavailable'?'PHOTO NOT AVAILABLE':'LOADING PHOTO'}</span>
-              {status==='unavailable'&&<small>Place details are still available</small>}
+              <Compass size={30}/><span>{status==='unavailable'?'PHOTO NOT AVAILABLE':'SEARCHING FOR PHOTO'}</span>
+              {status==='unavailable'&&<small>No matching public photo found. Map details are still available.</small>}
             </div>}
           <span className="india-photo-open"><ExternalLink size={14}/></span>
         </a>
         <div className="india-place-info"><h4>{place}</h4><span>{cityName}, {stateName}</span>
           <a href={mapUrl} target="_blank" rel="noreferrer">Map & directions ↗</a>
-          {status==='unavailable'&&<button className="india-photo-retry" type="button" onClick={()=>retryPhoto(place)}><RefreshCw size={12}/> Try photo again</button>}
+          {status==='unavailable'&&<button className="india-photo-retry" type="button" onClick={()=>retryPhoto(place)}><RefreshCw size={12}/> Search photo again</button>}
         </div>
       </article>;
     })}</div>
     {!places.length&&<p className="india-no-results">No matching places in this city yet.</p>}
-    <p className="india-data-note">Destination guides are being added using official tourism sources. Photos are optional; if a matching photo is unavailable, the destination and map links remain available. Always confirm local timings, transport and access rules before travelling.</p>
+    <p className="india-data-note">Photos are searched from Wikimedia Commons, not Wikipedia articles. A matching image is shown only when one is found; otherwise the destination and map links remain available. Always confirm local timings, transport and access rules before travelling.</p>
   </section>;
 }
