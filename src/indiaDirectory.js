@@ -92,4 +92,49 @@ export const indiaDirectory = [
 {state:"Ladakh",cities:[["Leh",["Shanti Stupa","Leh Palace"]],["Nubra Valley",["Diskit Monastery","Hunder Sand Dunes"]],["Kargil",["Kargil War Memorial","Mulbekh Monastery"]]]},
 {state:"Lakshadweep",cities:[["Agatti",["Agatti Island","Agatti Lagoon"]],["Kavaratti",["Kavaratti Island","Ujra Mosque"]],["Bangaram",["Bangaram Island","Thinnakara Island"]]]},
 {state:"Puducherry",cities:[["Puducherry",["Promenade Beach","Sri Aurobindo Ashram"]],["Karaikal",["Karaikal Beach","Thirunallar Temple"]],["Mahe",["Mahe River","St. Teresa's Shrine"]]]}
-].map(entry=>({...entry,cities:entry.cities.map(([name,places])=>({name,places}))}));
+
+].map(entry=>({...entry,cities:entry.cities.map(([name,places])=>({name,places}))})).map(entry=>{
+  // Additional curated destinations beyond the starter cities. This is an expanding
+  // travel shortlist, not an exhaustive list of every settlement in India.
+  const additions = {
+    "Andhra Pradesh":[["Amaravati",["Amaravati Stupa","Dhyana Buddha Statue"]],["Lepakshi",["Veerabhadra Temple","Lepakshi Nandi"]],["Srisailam",["Mallikarjuna Jyotirlinga","Srisailam Dam"]],["Rajahmundry",["Godavari Bridge","Dowleswaram Barrage"]]],
+    "Arunachal Pradesh":[["Bomdila",["Bomdila Monastery","Bomdila View Point"]],["Dirang",["Sangti Valley","Dirang Dzong"]],["Pasighat",["Daying Ering Wildlife Sanctuary","Siang River"]],["Mechuka",["Mechuka Valley","Samten Yongcha Monastery"]]],
+    "Assam":[["Sivasagar",["Rang Ghar","Talatal Ghar","Shiva Dol"]],["Dibrugarh",["Dehing Patkai National Park","Jokai Botanical Garden"]],["Dhemaji",["Malini Than","Gerukamukh"]],["Haflong",["Haflong Lake","Jatinga"]]],
+    "Bihar":[["Vaishali",["Ashokan Pillar, Vaishali","Vishwa Shanti Stupa, Vaishali"]],["Nalanda",["Nalanda University Ruins","Hiuen Tsang Memorial Hall"]],["Madhubani",["Sौराठ Sabha Gachhi","Uchchaith Bhagwati Temple"]],["Bodh Gaya",["Great Buddha Statue","Thai Monastery"]]],
+    "Chhattisgarh":[["Sirpur",[" लक्ष्मण Temple, Sirpur","Sirpur Buddhist Monastery"]],["Mainpat",["Tiger Point Waterfall","Fish Point"]],["Kawardha",["Bhoramdeo Temple","Madwa Mahal"]],["Dantewada",["Danteshwari Temple","Bailadila Hills"]]],
+    "Goa":[["Vasco da Gama",["Bogmalo Beach","Japanese Garden, Goa"]],["Canacona",["Palolem Beach","Agonda Beach"]],["Bicholim",["Mayem Lake","Arvalem Caves"]]],
+    "Gujarat":[["Kevadia",["Statue of Unity","Valley of Flowers, Kevadia"]],["Somnath",["Somnath Temple","Bhalka Tirth"]],["Patan",["Rani ki Vav","Sahastralinga Tank"]],["Bhuj",["Prag Mahal","Aina Mahal","Hamirsar Lake"]],["Saputara",["Saputara Lake","Sunset Point, Saputara"]]],
+    "Haryana":[["Panchkula",["Mata Mansa Devi Temple","Morni Hills"]],["Hisar",["Firoz Shah Palace Complex","Agroha Dham"]],["Panipat",["Panipat Museum","Kabuli Bagh Mosque"]]],
+    "Himachal Pradesh":[["Kullu",["Great Himalayan National Park","Bijli Mahadev Temple"]],["Kasol",["Parvati Valley","Manikaran Sahib"]],["Dalhousie",["Kalatop Wildlife Sanctuary","Khajjiar"]],["Kinnaur",["Sangla Valley","Chitkul","Kalpa"]],["Bir",["Bir Billing","Baijnath Temple"]]],
+    "Jharkhand":[["Jamshedpur",["Jubilee Park","Dimna Lake"]],["Hazaribagh",["Hazaribagh Wildlife Sanctuary","Canary Hill"]],["Bokaro",["City Park, Bokaro","Garga Dam"]],["Parasnath",["Shikharji Jain Pilgrimage"]]],
+    "Karnataka":[["Badami",["Badami Cave Temples","Agastya Lake"]],["Pattadakal",["Pattadakal Group of Monuments"]],["Aihole",["Durga Temple, Aihole","Lad Khan Temple"]],["Gokarna",["Om Beach","Kudle Beach","Mahabaleshwar Temple"]],["Coorg",["Abbey Falls","Raja's Seat","Talakaveri"]],["Chikmagalur",["Mullayanagiri","Baba Budangiri"]],["Belur",["Chennakeshava Temple, Belur"]]],
+    "Kerala":[["Wayanad",["Edakkal Caves","Banasura Sagar Dam","Pookode Lake"]],["Kozhikode",["Kozhikode Beach","Beypore"]],["Thekkady",["Periyar National Park","Periyar Lake"]],["Varkala",["Varkala Cliff","Janardanaswamy Temple"]],["Kumarakom",["Kumarakom Bird Sanctuary","Vembanad Lake"]]],
+    "Madhya Pradesh":[["Amarkantak",["Narmada Udgam Temple","Kapildhara Falls","Dudh Dhara Falls"]],["Chanderi",["Chanderi Fort","Koshak Mahal","Badal Mahal Gate"]],["Bhedaghat",["Marble Rocks","Dhuandhar Falls","Chausath Yogini Temple"]],["Pachmarhi",["Bee Fall","Jata Shankar Cave","Dhoopgarh"]],["Mandu",["Jahaz Mahal","Hindola Mahal","Rani Roopmati Pavilion"]],["Maheshwar",["Maheshwar Fort","Ahilya Ghat","Rehwa Society"]],["Sanchi",["Sanchi Stupa","Great Bowl","Ashokan Pillar"]],["Bargi",["Bargi Dam","Bargi Reservoir"]]],
+    "Maharashtra":[["Navi Mumbai",["Pandavkada Falls","Kharghar Hills"]],["Lonavala",["Karla Caves","Bhushi Dam","Lohagad Fort"]],["Alibaug",["Alibaug Beach","Kolaba Fort"]],["Kolhapur",["Mahalakshmi Temple","New Palace Museum"]],["Ratnagiri",["Ganpatipule Beach","Ratnadurg Fort"]],["Chhatrapati Sambhajinagar",["Bibi Ka Maqbara","Daulatabad Fort"]],["Tadoba",["Tadoba-Andhari Tiger Reserve"]]],
+    "Manipur":[["Ukhrul",["Shirui Kashong Peak","Khangkhui Cave"]],["Moirang",["INA Memorial","Loktak Lake"]]],
+    "Meghalaya":[["Mawphlang",["Mawphlang Sacred Forest"]],["Nongriat",["Double Decker Living Root Bridge"]],["Dawki",["Umngot River","Dawki Bridge"]],["Jowai",["Krang Suri Falls","Thadlaskein Lake"]]],
+    "Mizoram":[["Lunglei",["Khawnglung Wildlife Sanctuary","Lunglei View Point"]],["Serchhip",["Vantawng Falls","Thenzawl"]]],
+    "Nagaland":[["Mokokchung",["Longkhum Village","Mokokchung Town View Point"]],["Mon",["Longwa Village","Shangnyu Village"]],["Wokha",["Doyang Reservoir","Mount Tiyi"]]],
+    "Odisha":[["Chilika",["Chilika Lake","Satapada"]],["Gopalpur",["Gopalpur Beach"]],["Sambalpur",["Hirakud Dam","Samaleswari Temple"]],["Baripada",["Similipal National Park","Jwalamukhi Temple"]],["Jeypore",["Gupteswar Cave","Kolab Reservoir"]]],
+    "Punjab":[["Patiala",["Qila Mubarak","Sheesh Mahal, Patiala"]],["Kapurthala",["Jagatjit Palace","Kanjli Wetland"]],["Bathinda",["Qila Mubarak, Bathinda","Rose Garden, Bathinda"]],["Pathankot",["Ranjit Sagar Dam","Nurpur Fort"]]],
+    "Rajasthan":[["Bikaner",["Junagarh Fort","Karni Mata Temple"]],["Chittorgarh",["Chittorgarh Fort","Vijay Stambh"]],["Bundi",["Taragarh Fort, Bundi","Garh Palace"]],["Ajmer",["Ajmer Sharif Dargah","Ana Sagar Lake"]],["Ranthambore",["Ranthambore National Park","Ranthambore Fort"]],["Bharatpur",["Keoladeo National Park","Lohagarh Fort"]],["Alwar",["Bala Quila","Sariska Tiger Reserve"]]],
+    "Sikkim":[["Namchi",["Samdruptse Statue","Char Dham, Namchi"]],["Ravangla",["Buddha Park","Ralong Monastery"]],["Yuksom",["Dubdi Monastery","Khecheopalri Lake"]],["Zuluk",["Zuluk Loops","Thambi View Point"]]],
+    "Tamil Nadu":[["Kanyakumari",["Vivekananda Rock Memorial","Thiruvalluvar Statue"]],["Kodaikanal",["Kodaikanal Lake","Coaker's Walk","Pillar Rocks"]],["Mahabalipuram",["Shore Temple","Pancha Rathas","Arjuna's Penance"]],["Kanchipuram",["Kailasanathar Temple","Ekambareswarar Temple"]],["Kumbakonam",["Airavatesvara Temple","Mahamaham Tank"]],["Chettinad",["Chettinad Mansions","Kanadukathan Palace"]]],
+    "Telangana":[["Bhadrachalam",["Sri Sita Ramachandra Swamy Temple"]],["Nagarjuna Sagar",["Nagarjuna Sagar Dam","Nagarjunakonda Museum"]],["Adilabad",["Kuntala Waterfall","Pochera Waterfalls"]],["Yadadri",["Yadadri Lakshmi Narasimha Temple"]]],
+    "Tripura":[["Kailashahar",["Unakoti","Chouddo Devotar Temple"]],["Dharmanagar",["Jampui Hills","Kalachhara"]]],
+    "Uttar Pradesh":[["Fatehpur Sikri",["Buland Darwaza","Panch Mahal"]],["Jhansi",["Jhansi Fort","Rani Mahal"]],["Chitrakoot",["Ramghat","Kamadgiri","Gupt Godavari"]],["Sarnath",["Dhamek Stupa","Sarnath Archaeological Museum"]],["Bithoor",["Valmiki Ashram, Bithoor","Brahmavart Ghat"]],["Gorakhpur",["Gorakhnath Temple","Railway Museum, Gorakhpur"]],["Deoria",["Deoraha Baba Ashram"]]],
+    "Uttarakhand":[["Mussoorie",["Kempty Falls","Gun Hill","Company Garden"]],["Auli",["Auli Ski Resort","Gurso Bugyal"]],["Chopta",["Tungnath Temple","Chandrashila"]],["Badrinath",["Badrinath Temple","Mana Village"]],["Almora",["Jageshwar Temples","Bright End Corner"]],["Pithoragarh",["Pithoragarh Fort","Askot Wildlife Sanctuary"]],["Tehri",["Tehri Lake","Tehri Dam"]]],
+    "West Bengal":[["Kalimpong",["Deolo Hill","Durpin Monastery"]],["Digha",["New Digha Sea Beach","Marine Aquarium, Digha"]],["Murshidabad",["Hazarduari Palace","Katra Mosque"]],["Bishnupur",["Rasmancha","Jor Bangla Temple"]],["Shantiniketan",["Visva-Bharati","Amar Kutir"]]],
+    "Andaman and Nicobar Islands":[["Diglipur",["Ross and Smith Islands","Saddle Peak National Park"]],["Baratang",["Limestone Caves","Mud Volcano, Baratang"]],["Little Andaman",["Butler Bay Beach","White Surf Waterfall"]]],
+    "Chandigarh":[["Manimajra",["Mata Mansa Devi Temple"]]],
+    "Dadra and Nagar Haveli and Daman and Diu":[["Dadra",["Vanganga Lake Garden"]],["Silvassa",["Tribal Cultural Museum","Hirwa Van Garden"]]],
+    "Delhi":[["Mehrauli",["Mehrauli Archaeological Park","Jamali Kamali Mosque"]],["Central Delhi",["National Museum, New Delhi","Jantar Mantar, New Delhi"]]],
+    "Jammu and Kashmir":[["Sonamarg",["Thajiwas Glacier","Vishansar Lake"]],["Doodhpathri",["Doodhpathri Meadow"]],["Akhnoor",["Akhnoor Fort","Chenab River View"]],["Kishtwar",["Kishtwar National Park","Sinthan Top"]]],
+    "Ladakh":[["Zanskar",["Phugtal Monastery","Drang Drung Glacier"]],["Lamayuru",["Lamayuru Monastery","Moonland"]],["Tso Moriri",["Tso Moriri Lake","Korzok Monastery"]]],
+    "Lakshadweep":[["Minicoy",["Minicoy Lighthouse","Minicoy Lagoon"]],["Kalpeni",["Kalpeni Island","Tip Beach"]],["Kadmat",["Kadmat Island Lagoon"]]],
+    "Puducherry":[["Auroville",["Matrimandir","Auroville Visitors Centre"]],["Yanam",["Yanam Riverfront","Rajiv Gandhi Beach"]]]
+  };
+  const existing=new Set(entry.cities.map(city=>city.name.toLowerCase()));
+  const additionsForState=(additions[entry.state]||[]).filter(([name])=>!existing.has(name.toLowerCase()));
+  return {...entry,cities:[...entry.cities,...additionsForState.map(([name,places])=>({name,places}))]};
+});
