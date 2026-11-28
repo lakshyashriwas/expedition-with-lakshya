@@ -7,6 +7,7 @@ export default function IndiaExplorer(){
   const [cityName,setCityName]=useState('Bhopal');
   const [query,setQuery]=useState('');
   const [photos,setPhotos]=useState({});
+  const [placeDetails,setPlaceDetails]=useState({});
   const [photoStatus,setPhotoStatus]=useState({});
   const state=indiaDirectory.find(s=>s.state===stateName)||indiaDirectory[0];
   const city=state.cities.find(c=>c.name===cityName)||state.cities[0];
@@ -28,10 +29,14 @@ export default function IndiaExplorer(){
           if(!response.ok) throw new Error('No article image');
           const data=await response.json();
           const image=data.originalimage?.source||data.thumbnail?.source||'';
-          if(!image) throw new Error('No image available');
           if(!cancelled){
-            setPhotos(old=>({...old,[place]:{image,url:data.content_urls?.desktop?.page||'https://en.wikipedia.org/wiki/'+encodeURIComponent(place),description:data.extract||'',imageSource:'Wikipedia article'}}));
-            setPhotoStatus(old=>({...old,[place]:'ready'}));
+            setPlaceDetails(old=>({...old,[place]:data.extract||''}));
+            if(image){
+              setPhotos(old=>({...old,[place]:{image,imageSource:'Wikipedia article'}}));
+              setPhotoStatus(old=>({...old,[place]:'ready'}));
+            }else{
+              setPhotoStatus(old=>({...old,[place]:'unavailable'}));
+            }
           }
         }catch{
           if(!cancelled) setPhotoStatus(old=>({...old,[place]:'unavailable'}));
@@ -49,8 +54,9 @@ export default function IndiaExplorer(){
       if(!response.ok) throw new Error('No image');
       const data=await response.json();
       const image=data.originalimage?.source||data.thumbnail?.source||'';
+      setPlaceDetails(old=>({...old,[place]:data.extract||''}));
       if(!image) throw new Error('No image');
-      setPhotos(old=>({...old,[place]:{image,url:data.content_urls?.desktop?.page||'https://en.wikipedia.org/wiki/'+encodeURIComponent(place),description:data.extract||'',imageSource:'Wikipedia article'}}));
+      setPhotos(old=>({...old,[place]:{image,imageSource:'Wikipedia article'}}));
       setPhotoStatus(old=>({...old,[place]:'ready'}));
     }catch{setPhotoStatus(old=>({...old,[place]:'unavailable'}));}
   };
@@ -66,9 +72,10 @@ export default function IndiaExplorer(){
     <div className="india-place-grid">{places.map(place=>{
       const photo=photos[place];
       const status=photoStatus[place]||'loading';
-      const detailsUrl=photo?.url||'https://en.wikipedia.org/wiki/'+encodeURIComponent(place);
+      const mapUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place+', '+cityName+', '+stateName);
+      const description=placeDetails[place];
       return <article className="india-place-card" key={place}>
-        <a className="india-place-photo" href={detailsUrl} target="_blank" rel="noreferrer">
+        <a className="india-place-photo" href={mapUrl} target="_blank" rel="noreferrer">
           {photo?.image?<img src={photo.image} alt={place} loading="lazy" onError={()=>{setPhotos(old=>{const next={...old};delete next[place];return next;});setPhotoStatus(old=>({...old,[place]:'unavailable'}));}}/>:
             <div className={'india-photo-placeholder '+(status==='unavailable'?'is-unavailable':'')}>
               <Compass size={30}/><span>{status==='unavailable'?'PHOTO NOT AVAILABLE':'LOADING PHOTO'}</span>
@@ -83,6 +90,6 @@ export default function IndiaExplorer(){
       </article>;
     })}</div>
     {!places.length&&<p className="india-no-results">No matching places in this city yet.</p>}
-    <p className="india-data-note">Photos are shown when a matching Wikipedia article provides one. Some places may not have an available image yet; their details remain accessible and you can retry the photo.</p>
+    <p className="india-data-note">Place names and location links are provided directly on this website. Photo and short-summary suggestions may load from a public Wikipedia service; no Wikipedia account is needed. If a photo or summary is unavailable, the place card still works and map directions remain available.</p>
   </section>;
 }

@@ -26,7 +26,7 @@
 .india-place-info{padding:15px}
 .india-place-info h4{font:20px 'Playfair Display';font-weight:500;margin:0 0 7px}
 .india-place-info span{display:block;color:#7a857c;font-size:9px}
-.india-place-info>a{display:inline-block;margin-top:13px;color:#8b6847;font-size:9px;text-decoration:none}
+.india-place-info>a{display:inline-block;margin-top:13px;color:#8b6847;font-size:9px;text-decoration:none}.india-place-description{font-size:11px;line-height:1.65;color:#68756d;margin:10px 0 0;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .india-data-note{font-size:10px;line-height:1.8;color:#7c877e;margin-top:26px;max-width:800px}
 .india-no-results{padding:30px;text-align:center;color:#778078;font-size:12px}
 @media(max-width:700px){.india-explorer-controls{grid-template-columns:1fr;gap:13px;padding:16px}.india-place-grid{grid-template-columns:1fr 1fr;gap:12px}.india-place-photo{height:145px}.india-place-info{padding:12px}.india-place-info h4{font-size:17px}.india-location-heading h3{font-size:27px}}
